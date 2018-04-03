@@ -15,7 +15,7 @@ public class UploadingController {
     public static final String uploadingdir = System.getProperty("user.dir") + "/uploadingdir/";
     final static String dirImage = "D:\\home\\sharejee-prepare-teach\\pdf4\\uploadingfiles-springboot\\src\\main\\resources\\";
 
-    @RequestMapping("/")
+    @RequestMapping(value = "/",method = RequestMethod.GET)
     public String uploading(Model model) {
         File file = new File(dirImage);
         model.addAttribute("files", file.listFiles());
