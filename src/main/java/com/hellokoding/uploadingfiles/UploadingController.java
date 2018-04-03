@@ -13,10 +13,11 @@ import java.io.IOException;
 @Controller
 public class UploadingController {
     public static final String uploadingdir = System.getProperty("user.dir") + "/uploadingdir/";
+    final static String dirImage = "D:\\home\\sharejee-prepare-teach\\pdf4\\uploadingfiles-springboot\\src\\main\\resources\\";
 
     @RequestMapping("/")
     public String uploading(Model model) {
-        File file = new File(uploadingdir);
+        File file = new File(dirImage);
         model.addAttribute("files", file.listFiles());
         return "uploading";
     }
@@ -24,7 +25,7 @@ public class UploadingController {
     @RequestMapping(value = "/", method = RequestMethod.POST)
     public String uploadingPost(@RequestParam("uploadingFiles") MultipartFile[] uploadingFiles) throws IOException {
         for(MultipartFile uploadedFile : uploadingFiles) {
-            File file = new File(uploadingdir + uploadedFile.getOriginalFilename());
+            File file = new File(dirImage + uploadedFile.getOriginalFilename());
             uploadedFile.transferTo(file);
         }
 
